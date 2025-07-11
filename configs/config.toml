@@ -1,0 +1,13 @@
+[system]
+L        = 100
+j        = 1.0
+delta    = 1.0
+total_Sz = 90
+
+[simulation]
+nsweeps = 40
+maxdim  = [200]
+cutoff  = [1E-10]
+
+[io]
+filename = "datas/total_Sz_090_j01.csv"
