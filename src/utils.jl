@@ -1,4 +1,5 @@
 using Random # shuffle! を使うために必要
+using Dates
 
 function make_states(L::Int, total_Sz::Int64)
     # total_Szの計算は2Lのサイト数に対して行われるため、
@@ -17,7 +18,6 @@ function make_states(L::Int, total_Sz::Int64)
     # "Up"と"Dn"を必要数だけ持つ配列を作成
     state = vcat(fill("Up", num_up), fill("Dn", L - num_up))
     
-    # ★★★ 配列をランダムにシャッフルする ★★★
     shuffle!(state)
     
     return state
@@ -36,4 +36,15 @@ function transf_corp(i::Int)
         mu = 0
     end
     return l, mu
+end
+
+function create_csv_filename(L::Int, j::Float64, delta::Float64, total_Sz::Int64, base_dir::String = "results/")
+    # 現在の日時を取得
+    current_time = Dates.now()
+    # 日時をフォーマット
+    formatted_time = Dates.format(current_time, "yyyymmddHHMMSS")
+    # ファイル名を生成
+    filename = base_dir * "L$(L)_j$(j)_delta$(delta)_Sz$(total_Sz)_$(formatted_time).csv"
+    return filename
+    
 end

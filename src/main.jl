@@ -1,5 +1,4 @@
 using TOML
-
 include("core.jl")
 include("io.jl")
 
@@ -14,7 +13,10 @@ function main()
     nsweeps = config["simulation"]["nsweeps"]
     maxdim = config["simulation"]["maxdim"]
     cutoff = config["simulation"]["cutoff"]
-    filename = config["io"]["filename"]
+
+    base_dir = config["io"]["base_dir"]
+
+    filename = create_csv_filename(L, j, delta, total_Sz, base_dir)
 
     if total_Sz == 90
         factor = 0.5

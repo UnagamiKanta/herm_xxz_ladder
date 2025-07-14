@@ -54,6 +54,13 @@ function dmrg_gs_xxz_ladder(L::Int, j::Float64, delta::Float64, total_Sz::Int64 
         os +=   0.5 * J_par, "S-", 2j, "S+", 2j+2
     end
 
+    #端の磁場
+    h_prime = J_ver * delta / 4.0
+    os += h_prime, "Sz", 1
+    os += h_prime, "Sz", 2
+    os += h_prime, "Sz", 2L-1
+    os += h_prime, "Sz", 2L
+
     H = MPO(os,sites)
 
     state     = make_states(2L, total_Sz) 

@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import csv
 
-base_dir = "datas/total_Sz_"
+base_dir = "datas/"
 
 keys = ["010", "050", "090"]
 
