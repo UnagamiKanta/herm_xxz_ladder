@@ -55,11 +55,13 @@ function dmrg_gs_xxz_ladder(L::Int, j::Float64, delta::Float64, total_Sz::Int64 
     end
 
     #端の磁場
-    h_prime = J_par * delta / 4.0
-    os += h_prime, "Sz", 1
-    os += h_prime, "Sz", 2
-    os += h_prime, "Sz", 2L-1
-    os += h_prime, "Sz", 2L
+    if j == 10.0
+        h_prime = J_par * delta / 4.0
+        os += h_prime, "Sz", 1
+        os += h_prime, "Sz", 2
+        os += h_prime, "Sz", 2L-1
+        os += h_prime, "Sz", 2L
+    end
 
     H = MPO(os,sites)
 
